@@ -1,0 +1,57 @@
+@model JobApplicationManager.Models.JobApplication
+
+@{
+    ViewData["Title"] = "Application Details";
+}
+
+<div class="container mt-4">
+    <h1>Job Application Details</h1>
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <h4>@Model.JobTitle at @Model.CompanyName</h4>
+        </div>
+
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Company Name</dt>
+                <dd class="col-sm-9">@Model.CompanyName</dd>
+
+                <dt class="col-sm-3">Job Title</dt>
+                <dd class="col-sm-9">@Model.JobTitle</dd>
+
+                <dt class="col-sm-3">Application Date</dt>
+                <dd class="col-sm-9">
+                    @Model.ApplicationDate.ToString("dd MMM yyyy")
+                </dd>
+
+                <dt class="col-sm-3">Contact Email</dt>
+                <dd class="col-sm-9">
+                    @(string.IsNullOrWhiteSpace(Model.ContactEmail)
+                        ? "Not provided"
+                        : Model.ContactEmail)
+                </dd>
+
+                <dt class="col-sm-3">Status</dt>
+                <dd class="col-sm-9">
+                    <span class="badge bg-primary">@Model.Status</span>
+                </dd>
+
+                <dt class="col-sm-3">Notes</dt>
+                <dd class="col-sm-9">
+                    @(string.IsNullOrWhiteSpace(Model.Notes)
+                        ? "No notes"
+                        : Model.Notes)
+                </dd>
+            </dl>
+        </div>
+
+        <div class="card-footer">
+            <a asp-action="Edit" asp-route-id="@Model.Id"
+               class="btn btn-warning">Edit</a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary ms-2">Back to List</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+@model JobApplicationManager.Models.JobApplication
+
+@{
+    ViewData["Title"] = "Edit Job Application";
+}
+
+<div class="container mt-4">
+    <h1>Edit Job Application</h1>
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3"></div>
+
+        <div class="mb-3">
+            <label asp-for="CompanyName" class="form-label"></label>
+            <input asp-for="CompanyName" class="form-control" />
+            <span asp-validation-for="CompanyName"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="JobTitle" class="form-label"></label>
+            <input asp-for="JobTitle" class="form-control" />
+            <span asp-validation-for="JobTitle"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ApplicationDate" class="form-label"></label>
+            <input asp-for="ApplicationDate" type="date"
+                   class="form-control" />
+            <span asp-validation-for="ApplicationDate"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ContactEmail" class="form-label"></label>
+            <input asp-for="ContactEmail" type="email"
+                   class="form-control" />
+            <span asp-validation-for="ContactEmail"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Status" class="form-label"></label>
+            <select asp-for="Status" class="form-select">
+                <option value="Pending">Pending</option>
+                <option value="Interview">Interview</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+            <span asp-validation-for="Status"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Notes" class="form-label"></label>
+            <textarea asp-for="Notes" class="form-control"
+                      rows="4"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Update Application
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary ms-2">
+            Back to List
+        </a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

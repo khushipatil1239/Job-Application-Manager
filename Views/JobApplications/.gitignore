@@ -1,0 +1,17 @@
+# Build output
+bin/
+obj/
+
+# Local configuration and secrets
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# User-specific files
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Operating system files
+.DS_Store

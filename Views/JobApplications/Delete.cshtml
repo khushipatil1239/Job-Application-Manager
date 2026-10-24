@@ -1,0 +1,49 @@
+@model JobApplicationManager.Models.JobApplication
+
+@{
+    ViewData["Title"] = "Delete Job Application";
+}
+
+<div class="container mt-4">
+    <h1>Delete Job Application</h1>
+
+    <div class="alert alert-warning mt-3">
+        Are you sure you want to delete this job application?
+        This action cannot be undone.
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4>@Model.JobTitle</h4>
+            <p><strong>Company:</strong> @Model.CompanyName</p>
+            <p>
+                <strong>Application Date:</strong>
+                @Model.ApplicationDate.ToString("dd MMM yyyy")
+            </p>
+            <p><strong>Status:</strong> @Model.Status</p>
+
+            @if (!string.IsNullOrWhiteSpace(Model.ContactEmail))
+            {
+                <p><strong>Contact Email:</strong> @Model.ContactEmail</p>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(Model.Notes))
+            {
+                <p><strong>Notes:</strong> @Model.Notes</p>
+            }
+
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <button type="submit" class="btn btn-danger">
+                    Yes, Delete
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary ms-2">
+                    Cancel
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

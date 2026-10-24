@@ -1,0 +1,15 @@
+# Build files
+bin/
+obj/
+
+# Local configuration and secrets
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Editor and macOS files
+.vs/
+.vscode/
+*.user
+*.suo
+.DS_Store
